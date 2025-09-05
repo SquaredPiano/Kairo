@@ -1,0 +1,103 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+* { box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; font-feature-settings: "rlig" 1, "calt" 1; }
+html { scroll-behavior: smooth; }
+
+/* Desktop app specific styles */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+}
+
+/* Custom scrollbar for desktop */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background-color: #f8f9fa; }
+::-webkit-scrollbar-thumb { 
+  background-color: #e9ecef; 
+  border-radius: 4px; 
+  border: 1px solid #f8f9fa;
+}
+::-webkit-scrollbar-thumb:hover { background-color: #dee2e6; }
+
+/* Focus styles for desktop */
+button:focus-visible, a:focus-visible { 
+  outline: none; 
+  box-shadow: 0 0 0 2px var(--primary), 0 0 0 4px rgba(5, 150, 105, 0.1); 
+}
+
+/* Modern Earth/Green/Neutral Color Palette */
+:root {
+  --primary: #059669; /* Emerald-600 */
+  --primary-light: #10b981; /* Emerald-500 */
+  --primary-dark: #047857; /* Emerald-700 */
+  --secondary: #6b7280; /* Slate-500 */
+  --accent: #f8fafc; /* Slate-50 */
+  --background: #ffffff;
+  --text: #1f2937; /* Slate-800 */
+  --text-muted: #6b7280; /* Slate-500 */
+  --border: #e5e7eb; /* Slate-200 */
+  --border-light: #f1f5f9; /* Slate-100 */
+  --earth: #a3a3a3; /* Neutral-400 */
+  --earth-light: #d4d4d8; /* Neutral-300 */
+  --earth-dark: #737373; /* Neutral-500 */
+  --amber: #f59e0b; /* Amber-500 */
+  --amber-light: #fbbf24; /* Amber-400 */
+  --amber-dark: #d97706; /* Amber-600 */
+}
+
+/* Clean button styles */
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent);
+  border-color: var(--primary);
+}
+
+/* Desktop app specific animations */
+@keyframes slideIn {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slide-in { animation: slideIn 0.3s ease-out; }
+.animate-fade-in { animation: fadeIn 0.2s ease-out; }
+
+/* Remove all the AI slop gradients and animations */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

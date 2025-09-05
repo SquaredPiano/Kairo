@@ -4,12 +4,37 @@
   "description": "A local-first study companion where students drag in lectures (PDFs, slides, videos). On an infinite canvas, they drop AI agents (Notes, Flashcards, Quizzes, Slides). Each agent processes the material offline, outputs structured study resources, and supports chat commands (@Quiz_Agent make the quiz harder) for refinement.",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "webpack --mode development && electron .",
+    "build": "webpack --mode production",
+    "build:css": "postcss src/styles.css -o src/styles.css",
+    "watch:css": "postcss src/styles.css -o src/styles.css --watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "^38.0.0"
+    "@babel/core": "^7.28.3",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "electron": "^38.0.0",
+    "electron-rebuild": "^3.2.9",
+    "html-webpack-plugin": "^5.6.4",
+    "husky": "^4.3.8",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-loader": "^8.2.0",
+    "style-loader": "^4.0.0",
+    "tailwindcss": "^3.4.17",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   }
 }
