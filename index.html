@@ -1,13 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Electron App</title>
-  </head>
-  <body>
-    <h1>Hello from Electron!</h1>
-    <script>
-      console.log("Renderer process loaded");
-    </script>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kairo - Local-First Study Agent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Kairo</h1>
+    <p>Local-First Study Companion</p>
+  </header>
+  <main>
+    <section id="hero">
+      <h2>Transform Your Lectures into Study Resources</h2>
+      <p>Drag in PDFs, slides, and videos. Drop AI agents on an infinite canvas. Generate notes, flashcards, quizzes, and slides—all offline.</p>
+      <button id="get-started">Get Started</button>
+    </section>
+    <section id="features">
+      <h2>Core Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Infinite Canvas</h3>
+          <p>Drag and drop AI agents onto your materials for seamless processing.</p>
+        </div>
+        <div class="feature">
+          <h3>File Ingestion</h3>
+          <p>Support for PDFs, PPTX, MP4, DOCX with automatic transcription.</p>
+        </div>
+        <div class="feature">
+          <h3>AI Agents</h3>
+          <p>Notes, Flashcards, Quizzes, Slides—refine with chat commands.</p>
+        </div>
+        <div class="feature">
+          <h3>Offline-First</h3>
+          <p>All processing happens locally, no cloud dependency.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2025 Kairo. Built with Tauri + React.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
 </html>
