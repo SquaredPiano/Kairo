@@ -14,3 +14,9 @@ contextBridge.exposeInMainWorld('kairoAPI', {
     ipcRenderer.invoke('generate-output', materialId, agentType),
   getOutputs: (materialId) => ipcRenderer.invoke('get-outputs', materialId)
 });
+
+// OAuth API
+contextBridge.exposeInMainWorld('electronAPI', {
+  openExternal: (url) => ipcRenderer.invoke('open-external-url', url),
+  oauthCallback: (code, state) => ipcRenderer.invoke('oauth-callback', code, state)
+});

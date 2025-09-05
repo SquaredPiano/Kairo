@@ -1,31 +1,39 @@
 function getAllCourses(db) {
-    const stmt = db.prepare(`
-      SELECT c.*, COUNT(m.id) as module_count 
-      FROM courses c 
-      LEFT JOIN modules m ON c.id = m.course_id 
-      GROUP BY c.id
-      ORDER BY c.created_at DESC
-    `);
-    return stmt.all();
+    return new Promise((resolve, reject) => {
+      db.all(`
+        SELECT c.*, COUNT(m.id) as module_count 
+        FROM courses c 
+        LEFT JOIN modules m ON c.id = m.course_id 
+        GROUP BY c.id
+        ORDER BY c.created_at DESC
+      `, (err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      });
+    });
   }
   
   function insertCourse(db, courseData) {
-    const stmt = db.prepare(`
-      INSERT INTO courses (id, name, source, term) 
-      VALUES (?, ?, ?, ?)
-    `);
-    
-    try {
-      const result = stmt.run(
+    return new Promise((resolve, reject) => {
+      db.run(`
+        INSERT INTO courses (id, name, source, term) 
+        VALUES (?, ?, ?, ?)
+      `, [
         courseData.id,
         courseData.name,
         courseData.source || 'Manual',
         courseData.term
-      );
-      return { success: true, id: courseData.id };
-    } catch (error) {
-      return { success: false, error: error.message };
-    }
+      ], function(err) {
+        if (err) {
+          resolve({ success: false, error: err.message });
+        } else {
+          resolve({ success: true, id: courseData.id });
+        }
+      });
+    });
   }
   
   module.exports = { getAllCourses, insertCourse };

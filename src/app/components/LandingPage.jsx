@@ -1,6 +1,6 @@
 import React from 'react';
 
-function LandingPage({ onLaunchApp }) {
+function LandingPage({ onLaunchApp, onSignIn }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-emerald-50 to-amber-50">
       {/* Innovative Header with Organic Shapes */}
@@ -32,7 +32,10 @@ function LandingPage({ onLaunchApp }) {
             </div>
             
             <div className="flex items-center space-x-6">
-              <button className="text-slate-600 hover:text-slate-900 px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-slate-100 rounded-xl">
+              <button 
+                onClick={onSignIn}
+                className="text-slate-600 hover:text-slate-900 px-4 py-2 text-sm font-semibold transition-all duration-200 hover:bg-slate-100 rounded-xl"
+              >
                 Sign In
               </button>
               <button 

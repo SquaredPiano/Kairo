@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-function Header({ onBackToLanding }) {
+function Header({ onBackToLanding, onSignOut, user }) {
   useEffect(() => {
     if (typeof lucide !== 'undefined') lucide.createIcons();
   }, []);
@@ -50,9 +50,31 @@ function Header({ onBackToLanding }) {
             <button className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-all duration-200 group">
               <i data-lucide="settings" className="w-5 h-5 text-slate-600 group-hover:text-emerald-600"></i>
             </button>
-            <button className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-all duration-200 group">
-              <i data-lucide="user" className="w-5 h-5 text-slate-600 group-hover:text-emerald-600"></i>
-            </button>
+            
+            {/* User Profile */}
+            {user ? (
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2 bg-slate-50 rounded-xl px-3 py-2">
+                  <div className="w-6 h-6 bg-gradient-to-br from-emerald-500 to-slate-600 rounded-full flex items-center justify-center">
+                    <span className="text-white text-xs font-bold">
+                      {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                    </span>
+                  </div>
+                  <span className="text-sm font-medium text-slate-700">{user.name}</span>
+                </div>
+                <button 
+                  onClick={onSignOut}
+                  className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-all duration-200 group"
+                  title="Sign Out"
+                >
+                  <i data-lucide="log-out" className="w-5 h-5 text-slate-600 group-hover:text-red-600"></i>
+                </button>
+              </div>
+            ) : (
+              <button className="w-10 h-10 rounded-xl hover:bg-slate-100 flex items-center justify-center transition-all duration-200 group">
+                <i data-lucide="user" className="w-5 h-5 text-slate-600 group-hover:text-emerald-600"></i>
+              </button>
+            )}
           </div>
         </div>
       </div>

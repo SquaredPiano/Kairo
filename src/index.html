@@ -10,6 +10,15 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen">
-  <div id="root"></div>
+  <div id="root">
+    <!-- Fallback content in case React fails to load -->
+    <div style="display: flex; align-items: center; justify-content: center; height: 100vh; background: #1f2937; color: white; font-family: Arial, sans-serif;">
+      <div style="text-align: center;">
+        <h1>Loading Kairo...</h1>
+        <p>If you see this message for more than a few seconds, there may be an error.</p>
+        <p>Check the console for error messages.</p>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
